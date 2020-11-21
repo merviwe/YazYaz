@@ -2,10 +2,6 @@
 @model YazYaz.Pages.IndexModel
 @{
 }
-<div class="jumbotron onesidedropshadow">
-    <h1 class="jumbotronText">Get ready.</h1>
-    <p class="jumbotronText">Test your typing speed.</p>
-</div>
 
 <div class="container-fluid">
 
@@ -23,32 +19,20 @@
         <div class="lead paragraph col-md-6  blocks border">
         </div>
         <!--textarea-->
-        <div class="col-md-6  blocks">
-            <div class="form-group ">
-                <label for="comment">The timer starts when a key is pressed.</label>
-                <button type="button" class="resetBtn btn btn-default"><i class="fa fa-refresh"></i> Reset</button>
-
-                <textarea class="form-control" rows="13" id="userInput" onkeypress="CallBoth(event)" onkeydown="BackSpace(event)"></textarea>
-                <!--alert-->
-                <div class="alert alert-danger alert-dismissible text-center" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <strong>Warning!</strong> The timer is still running. You must finish typing all of the content!
-                </div>
-
+        <div>
+            <div>
             </div>
-
         </div>
-
     </div>
-
-    <!--footer-->
     <div class="row">
-        <div class="col-md-12">
-            <footer class="footer">
-                <div class="container">
-                    <p class="text-center">By Ryan Samarajeewa and Andy Yang. View source on <a href="https://github.com/ryansama/WPM-Calculator">GitHub</a>.</p>
-                </div>
-            </footer>
+        <label for="comment">The timer starts when a key is pressed.</label>
+        <button type="button" class="resetBtn btn btn-default"><i class="fa fa-refresh"></i> Reset</button>
+
+        <input class="form-control" id="userInput" onkeypress="CallBoth(event)" onkeydown="BackSpace(event)" />
+        <!--alert-->
+        <div class="alert alert-danger alert-dismissible text-center" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>Warning!</strong> The timer is still running. You must finish typing all of the content!
         </div>
     </div>
 </div>
