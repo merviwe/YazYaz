@@ -1,0 +1,20 @@
+﻿@page
+@model YazYaz.Pages.Profile.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Watchlist</h4>
+    <hr />
+    <dl class="row">
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Watchlist.WatchlistId">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
