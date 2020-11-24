@@ -14,7 +14,6 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using YazYaz.Areas.Identity.Data;
-using YazYaz.Models;
 
 namespace YazYaz.Areas.Identity.Pages.Account
 {
@@ -77,7 +76,6 @@ namespace YazYaz.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = new YazYazUser {
-                    Watchlist = new Watchlist(),
                     UserName = Input.Email, 
                     Email = Input.Email 
                 };
