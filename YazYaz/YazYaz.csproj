@@ -6,6 +6,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20201119190630_init.cs" />
+    <Compile Remove="Migrations\20201119190630_init.Designer.cs" />
+    <Compile Remove="Migrations\20201121111357_second.cs" />
+    <Compile Remove="Migrations\20201121111357_second.Designer.cs" />
+    <Compile Remove="Migrations\20201121160348_AddWatchlist.cs" />
+    <Compile Remove="Migrations\20201121160348_AddWatchlist.Designer.cs" />
+    <Compile Remove="Migrations\20201121164652_CustomUserData.cs" />
+    <Compile Remove="Migrations\20201121164652_CustomUserData.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.9" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.10" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.10" />
@@ -20,7 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>

@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace YazYaz.Migrations
 {
-    public partial class init : Migration
+    public partial class first : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -153,6 +153,27 @@ namespace YazYaz.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Record",
+                columns: table => new
+                {
+                    RecordID = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Time = table.Column<float>(nullable: false),
+                    Speed = table.Column<int>(nullable: false),
+                    UserIDId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Record", x => x.RecordID);
+                    table.ForeignKey(
+                        name: "FK_Record_AspNetUsers_UserIDId",
+                        column: x => x.UserIDId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -189,6 +210,11 @@ namespace YazYaz.Migrations
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Record_UserIDId",
+                table: "Record",
+                column: "UserIDId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -207,6 +233,9 @@ namespace YazYaz.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "Record");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
