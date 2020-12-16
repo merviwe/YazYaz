@@ -1,9 +1,10 @@
 ﻿@page
-@model YazYaz.Pages.IndexModel
+@model IndexModel
 @{
+    ViewData["Title"] = "Home page";
 }
 
-<div class="container-fluid">
+<div class="container-fluid pt-3">
 
     <div class="row ">
 
@@ -13,13 +14,14 @@
 
     </div>
 
-    <div class="row">
+    <div class="row pt-3">
 
         <!--generated paragraphs-->
         <div class="lead paragraph col-md-12 blocks border">
+            @Html.DisplayFor(model => model.Quote.Text)
         </div>
     </div>
-    <div class="row justify-content-center">
+    <div class="row justify-content-center pt-4">
         <label for="comment">The timer starts when a key is pressed.</label>
 
         <input class="form-control" id="userInput" onkeypress="CallBoth(event)" onkeydown="BackSpace(event)" />
@@ -28,7 +30,19 @@
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <strong>Warning!</strong> The timer is still running. You must finish typing all of the content!
         </div>
-        <button type="button" class="resetBtn btn btn-primary btn-lg"><i class="fa fa-refresh"></i> Reset</button>
+        <div class="pt-3">
+            <button type="button" class="resetBtn btn btn-primary btn-lg"><i class="fa fa-refresh"></i> Reset</button>
+        </div>
+    </div>
+    <div class="row justify-content-center pt-3">
+        <div id="result"></div>
     </div>
 </div>
 
+@section Scripts
+{ 
+    <script>
+        var paragraph = "@Html.DisplayFor(model => model.Quote.Text)"
+    </script>
+    <script src="~/js/main.js"></script>
+}

@@ -1,6 +1,9 @@
 @using Microsoft.AspNetCore.Identity
 @using YazYaz
 @using YazYaz.Data
-@using YazYaz.Models 
 @namespace YazYaz.Pages
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using YazYaz.Authorization;
+@using Microsoft.AspNetCore.Authorization
+@using YazYaz.Models
+@inject IAuthorizationService AuthorizationService

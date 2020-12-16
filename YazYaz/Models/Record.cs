@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Identity;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace YazYaz.Models
@@ -10,7 +10,8 @@ namespace YazYaz.Models
     {
         public int RecordID { get; set; }
         public float Time { get; set; }
+        public DateTime Date { get; set; }
         public int Speed { get; set; }
-        public ApplicationUser UserID { get; set; }
+        public int OwnerID { get; set; }
     }
 }

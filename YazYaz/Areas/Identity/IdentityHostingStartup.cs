@@ -7,8 +7,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using YazYaz.Data;
 
-[assembly: HostingStartup(typeof(yazyaz_prototip2.Areas.Identity.IdentityHostingStartup))]
-namespace yazyaz_prototip2.Areas.Identity
+[assembly: HostingStartup(typeof(YazYaz.Areas.Identity.IdentityHostingStartup))]
+namespace YazYaz.Areas.Identity
 {
     public class IdentityHostingStartup : IHostingStartup
     {
