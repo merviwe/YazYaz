@@ -195,13 +195,13 @@ function StopTime(){
     customAlert("Saving...", "info");
 
     var settings = {
-        "url": "https://localhost:44383/api/Records",
+        "url": uri,
         "method": "POST",
         "timeout": 0,
         "headers": {
             "Content-Type": "application/json",
         },
-        "data": JSON.stringify({ "time": (seconds / 10).toString(), "speed": netWPM, "ownerID": "0000" }),
+        "data": JSON.stringify({ "time": (seconds / 10).toString(), "speed": netWPM }),
         "success": function () {
             customAlert("Saved!", "success");
         },

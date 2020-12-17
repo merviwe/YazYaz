@@ -12,9 +12,9 @@ namespace YazYaz.Authorization
     public class ContactIsOwnerAuthorizationHandler
                 : AuthorizationHandler<OperationAuthorizationRequirement, Quote>
     {
-        UserManager<IdentityUser> _userManager;
+        UserManager<ApplicationUser> _userManager;
 
-        public ContactIsOwnerAuthorizationHandler(UserManager<IdentityUser>
+        public ContactIsOwnerAuthorizationHandler(UserManager<ApplicationUser>
             userManager)
         {
             _userManager = userManager;
@@ -40,7 +40,8 @@ namespace YazYaz.Authorization
                 return Task.CompletedTask;
             }
 
-            if (resource.OwnerID == _userManager.GetUserId(context.User))
+            var _appUser = _userManager.GetUserAsync(context.User).Result;
+            if (resource.Owner == _appUser)
             {
                 context.Succeed(requirement);
             }

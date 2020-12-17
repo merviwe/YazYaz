@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using YazYaz.Data;
+using YazYaz.Models;
 
 namespace YazYaz.Pages.Quotes
 {
@@ -13,12 +14,12 @@ namespace YazYaz.Pages.Quotes
     {
         protected ApplicationDbContext Context { get; }
         protected IAuthorizationService AuthorizationService { get; }
-        protected UserManager<IdentityUser> UserManager { get; }
+        protected UserManager<ApplicationUser> UserManager { get; }
 
         public DI_BasePageModel(
             ApplicationDbContext context,
             IAuthorizationService authorizationService,
-            UserManager<IdentityUser> userManager) : base()
+            UserManager<ApplicationUser> userManager) : base()
         {
             Context = context;
             UserManager = userManager;

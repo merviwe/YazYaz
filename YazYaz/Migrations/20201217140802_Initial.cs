@@ -39,44 +39,12 @@ namespace YazYaz.Migrations
                     TwoFactorEnabled = table.Column<bool>(nullable: false),
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
-                    AccessFailedCount = table.Column<int>(nullable: false)
+                    AccessFailedCount = table.Column<int>(nullable: false),
+                    OwnerID = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Quote",
-                columns: table => new
-                {
-                    QuoteID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    OwnerID = table.Column<string>(nullable: true),
-                    Text = table.Column<string>(nullable: true),
-                    Author = table.Column<string>(nullable: true),
-                    Title = table.Column<string>(nullable: true),
-                    Status = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Quote", x => x.QuoteID);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Record",
-                columns: table => new
-                {
-                    RecordID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Time = table.Column<float>(nullable: false),
-                    Date = table.Column<DateTime>(nullable: false),
-                    Speed = table.Column<int>(nullable: false),
-                    OwnerID = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Record", x => x.RecordID);
                 });
 
             migrationBuilder.CreateTable(
@@ -185,6 +153,51 @@ namespace YazYaz.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Quote",
+                columns: table => new
+                {
+                    QuoteID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    OwnerId = table.Column<string>(nullable: true),
+                    Text = table.Column<string>(nullable: true),
+                    Author = table.Column<string>(nullable: true),
+                    Title = table.Column<string>(nullable: true),
+                    Status = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Quote", x => x.QuoteID);
+                    table.ForeignKey(
+                        name: "FK_Quote_AspNetUsers_OwnerId",
+                        column: x => x.OwnerId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Record",
+                columns: table => new
+                {
+                    RecordID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Time = table.Column<float>(nullable: false),
+                    Date = table.Column<DateTime>(nullable: false),
+                    Speed = table.Column<int>(nullable: false),
+                    OwnerId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Record", x => x.RecordID);
+                    table.ForeignKey(
+                        name: "FK_Record_AspNetUsers_OwnerId",
+                        column: x => x.OwnerId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -223,6 +236,16 @@ namespace YazYaz.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Quote_OwnerId",
+                table: "Quote",
+                column: "OwnerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Record_OwnerId",
+                table: "Record",
+                column: "OwnerId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

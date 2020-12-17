@@ -18,7 +18,7 @@ namespace YazYaz.Pages.Quotes
         public IndexModel(
             ApplicationDbContext context,
             IAuthorizationService authorizationService,
-            UserManager<IdentityUser> userManager)
+            UserManager<ApplicationUser> userManager)
             : base(context, authorizationService, userManager)
         {
         }
@@ -32,13 +32,13 @@ namespace YazYaz.Pages.Quotes
 
             var isAuthorized = User.IsInRole(Constants.QuoteAdministratorsRole);
 
-            var currentUserId = UserManager.GetUserId(User);
+            var currentUser = UserManager.GetUserAsync(User).Result;
 
             // sadece admin veya uyeler kendi gonderdigi yazilari gorebilir
             if (!isAuthorized)
             {
                 quotes = quotes.Where(q => q.Status == QuoteStatus.Approved
-                                         || q.OwnerID == currentUserId);
+                                         || q.Owner == currentUser);
             }
 
             Quote = await quotes.ToListAsync();

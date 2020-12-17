@@ -18,7 +18,7 @@ namespace YazYaz.Pages.Quotes
         public DetailsModel(
             ApplicationDbContext context,
             IAuthorizationService authorizationService,
-            UserManager<IdentityUser> userManager)
+            UserManager<ApplicationUser> userManager)
             : base(context, authorizationService, userManager)
         {
         }
@@ -36,10 +36,10 @@ namespace YazYaz.Pages.Quotes
 
             var isAuthorized = User.IsInRole(Constants.QuoteAdministratorsRole);
 
-            var currentUserId = UserManager.GetUserId(User);
+            var currentUser = UserManager.GetUserAsync(User).Result;
 
-            if (! isAuthorized 
-                && currentUserId != Quote.OwnerID 
+            if (!isAuthorized
+                && currentUser != Quote.Owner 
                 && Quote.Status != QuoteStatus.Approved)
             {
                 return Forbid();

@@ -18,7 +18,7 @@ namespace YazYaz.Pages.Quotes
         public CreateModel(
             ApplicationDbContext context,
             IAuthorizationService authorizationService,
-            UserManager<IdentityUser> userManager)
+            UserManager<ApplicationUser> userManager)
             : base(context, authorizationService, userManager)
         {
         }
@@ -40,7 +40,7 @@ namespace YazYaz.Pages.Quotes
                 return Page();
             }
 
-            Quote.OwnerID = UserManager.GetUserId(User);
+            Quote.Owner = UserManager.GetUserAsync(User).Result;
 
             // auth control
             var isAuthorized = 

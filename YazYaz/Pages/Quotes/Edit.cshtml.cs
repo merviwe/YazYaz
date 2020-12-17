@@ -19,7 +19,7 @@ namespace YazYaz.Pages.Quotes
         public EditModel(
             ApplicationDbContext context,
             IAuthorizationService authorizationService,
-            UserManager<IdentityUser> userManager)
+            UserManager<ApplicationUser> userManager)
             : base(context, authorizationService, userManager)
         {
         }
@@ -76,7 +76,7 @@ namespace YazYaz.Pages.Quotes
                 return Forbid();
             }
 
-            Quote.OwnerID = quote.OwnerID;
+            Quote.Owner = quote.Owner;
 
             Context.Attach(Quote).State = EntityState.Modified;
 

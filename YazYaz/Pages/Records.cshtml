@@ -3,6 +3,7 @@
 
 @{
     ViewData["Title"] = "Records";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
 <h1>Records</h1>
@@ -14,13 +15,13 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Record[0].OwnerID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Record[0].Speed)
+                @Html.DisplayNameFor(model => model.Record[0].Owner.UserName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Record[0].Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Record[0].Speed)
             </th>
             <th></th>
         </tr>
@@ -29,15 +30,16 @@
 @foreach (var item in Model.Record) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.OwnerID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Speed)
+                @Html.DisplayFor(modelItem => item.Owner.UserName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Date)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Speed)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.RecordID">Edit</a> |
                 <a asp-page="./Details" asp-route-id="@item.RecordID">Details</a> |
                 <a asp-page="./Delete" asp-route-id="@item.RecordID">Delete</a>
             </td>

@@ -35,7 +35,6 @@
     <None Include="Pages\Quotes\Details.cshtml" />
     <None Include="Pages\Quotes\Edit.cshtml" />
     <None Include="Pages\Quotes\Index.cshtml" />
-    <None Include="Pages\Records.cshtml" />
     <None Include="Pages\Shared\_Layout.cshtml" />
     <None Include="Pages\Shared\_LoginPartial.cshtml" />
     <None Include="Pages\Shared\_ValidationScriptsPartial.cshtml" />

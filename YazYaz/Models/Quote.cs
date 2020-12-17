@@ -9,7 +9,7 @@ namespace YazYaz.Models
     public class Quote
     {
         public int QuoteID { get; set; }
-        public string OwnerID { get; set; }
+        public ApplicationUser Owner { get; set; }
         public string Text { get; set; }
         public string Author { get; set; }
         public string Title { get; set; }

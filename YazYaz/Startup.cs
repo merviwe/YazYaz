@@ -15,6 +15,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using YazYaz.Authorization;
 using YazYaz.Data;
+using YazYaz.Models;
 
 namespace YazYaz
 {
@@ -33,7 +34,7 @@ namespace YazYaz
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>(options =>
+            services.AddDefaultIdentity<ApplicationUser>(options =>
             {
                 options.SignIn.RequireConfirmedAccount = true;
                 options.Password.RequiredLength = 3;

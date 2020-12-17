@@ -18,7 +18,7 @@ namespace YazYaz.Pages.Quotes
         public DeleteModel(
             ApplicationDbContext context,
             IAuthorizationService authorizationService,
-            UserManager<IdentityUser> userManager)
+            UserManager<ApplicationUser> userManager)
             : base(context, authorizationService, userManager)
         {
         }
