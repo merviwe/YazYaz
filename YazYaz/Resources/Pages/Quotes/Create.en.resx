@@ -117,10 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="StartTyping" xml:space="preserve">
-    <value>Start typing</value>
+  <data name="AuthorCreate" xml:space="preserve">
+    <value>Author</value>
   </data>
-  <data name="TimerStarts" xml:space="preserve">
-    <value>The timer starts when a key is pressed.</value>
+  <data name="BackToList" xml:space="preserve">
+    <value>Back to list</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="QuoteCreate" xml:space="preserve">
+    <value>Quote</value>
+  </data>
+  <data name="TextCreate" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <data name="TitleCreate" xml:space="preserve">
+    <value>Title</value>
   </data>
 </root>

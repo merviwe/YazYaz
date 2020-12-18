@@ -29,7 +29,7 @@
     <None Include="Areas\Identity\Pages\_ViewStart.cshtml" />
     <None Include="Pages\Error.cshtml" />
     <None Include="Pages\Index.cshtml" />
-    <None Include="Pages\Privacy.cshtml" />
+    <None Include="Pages\Help.cshtml" />
     <None Include="Pages\Quotes\Create.cshtml" />
     <None Include="Pages\Quotes\Delete.cshtml" />
     <None Include="Pages\Quotes\Details.cshtml" />

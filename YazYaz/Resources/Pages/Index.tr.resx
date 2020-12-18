@@ -120,4 +120,7 @@
   <data name="StartTyping" xml:space="preserve">
     <value>Yazmaya baslayin!</value>
   </data>
+  <data name="TimerStarts" xml:space="preserve">
+    <value>Yazmaya başladığınızda kronometre başlayacaktır.</value>
+  </data>
 </root>

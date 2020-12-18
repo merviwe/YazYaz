@@ -117,10 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="StartTyping" xml:space="preserve">
-    <value>Start typing</value>
+  <data name="Help" xml:space="preserve">
+    <value>Help</value>
   </data>
-  <data name="TimerStarts" xml:space="preserve">
-    <value>The timer starts when a key is pressed.</value>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Quotes" xml:space="preserve">
+    <value>Quotes</value>
+  </data>
+  <data name="Rankings" xml:space="preserve">
+    <value>Rankings</value>
   </data>
 </root>

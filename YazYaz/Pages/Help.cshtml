@@ -1,0 +1,9 @@
+﻿@page
+@model PrivacyModel
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+@{
+    ViewData["Title"] = Localizer["About"];
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>@Localizer["Help"]</p>

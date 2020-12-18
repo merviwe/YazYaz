@@ -117,10 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="StartTyping" xml:space="preserve">
-    <value>Start typing</value>
+  <data name="About" xml:space="preserve">
+    <value>About</value>
   </data>
-  <data name="TimerStarts" xml:space="preserve">
-    <value>The timer starts when a key is pressed.</value>
+  <data name="Help" xml:space="preserve">
+    <value>You can start playing from the Home page, your scores will be automatically saved to the database. You can also submit quotes from various sources, in order to submit quotes, you have to be authenticated. So, let's create an account and involve the community.</value>
   </data>
 </root>

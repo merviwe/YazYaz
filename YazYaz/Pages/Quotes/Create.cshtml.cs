@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Extensions.Localization;
 using YazYaz.Authorization;
 using YazYaz.Data;
 using YazYaz.Models;
@@ -15,12 +16,16 @@ namespace YazYaz.Pages.Quotes
 {
     public class CreateModel : DI_BasePageModel
     {
+        private readonly IStringLocalizer<CreateModel> _stringLocalizer;
+
         public CreateModel(
             ApplicationDbContext context,
             IAuthorizationService authorizationService,
-            UserManager<ApplicationUser> userManager)
+            UserManager<ApplicationUser> userManager,
+            IStringLocalizer<CreateModel> stringLocalizer)
             : base(context, authorizationService, userManager)
         {
+            this._stringLocalizer = stringLocalizer;
         }
 
         public IActionResult OnGet()

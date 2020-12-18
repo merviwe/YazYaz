@@ -1,30 +1,31 @@
 ﻿@page
 @model YazYaz.Pages.Quotes.CreateModel
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
 
 @{
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>@Localizer["Create"]</h1>
 
-<h4>Quote</h4>
+<h4>@Localizer["QuoteCreate"]</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Quote.Text" class="control-label"></label>
+                <label asp-for="Quote.Text" class="control-label">@Localizer["TextCreate"]</label>
                 <input asp-for="Quote.Text" class="form-control" />
                 <span asp-validation-for="Quote.Text" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Quote.Author" class="control-label"></label>
+                <label asp-for="Quote.Author" class="control-label">@Localizer["AuthorCreate"]</label>
                 <input asp-for="Quote.Author" class="form-control" />
                 <span asp-validation-for="Quote.Author" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Quote.Title" class="control-label"></label>
+                <label asp-for="Quote.Title" class="control-label">@Localizer["TitleCreate"]</label>
                 <input asp-for="Quote.Title" class="form-control" />
                 <span asp-validation-for="Quote.Title" class="text-danger"></span>
             </div>
@@ -36,7 +37,7 @@
 </div>
 
 <div>
-    <a asp-page="Index">Back to List</a>
+    <a asp-page="Index">@Localizer["BackToList"]</a>
 </div>
 
 @section Scripts {

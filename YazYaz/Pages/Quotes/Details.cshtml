@@ -1,36 +1,37 @@
 ﻿@page
 @model YazYaz.Pages.Quotes.DetailsModel
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
 
 @{
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1>@Localizer["Details"]</h1>
 
 <div>
-    <h4>Quote</h4>
+    <h4>@Localizer["DetailsQuote"]</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Quote.Text)
+            @Localizer["DetailsText"]
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Quote.Text)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Quote.Author)
+            @Localizer["DetailsAuthor"]
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Quote.Author)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Quote.Title)
+            @Localizer["DetailsTitle"]
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Quote.Title)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Quote.Status)
+            @Localizer["DetailsStatus"]
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Quote.Status)
@@ -40,27 +41,27 @@
 
 @if (Model.Quote.Status != QuoteStatus.Approved)
 {
-    @if ((await AuthorizationService.AuthorizeAsync(
+@if ((await AuthorizationService.AuthorizeAsync(
     User, Model.Quote, QuoteOperations.Approve)).Succeeded)
     {
-        <form style="display:inline;" method="post">
-            <input type="hidden" name="id" value="@Model.Quote.QuoteID" />
-            <input type="hidden" name="status" value="@QuoteStatus.Approved" />
-            <button type="submit" class="btn btn-xs btn-success">Approve</button>
-        </form>
+<form style="display:inline;" method="post">
+    <input type="hidden" name="id" value="@Model.Quote.QuoteID" />
+    <input type="hidden" name="status" value="@QuoteStatus.Approved" />
+    <button type="submit" class="btn btn-xs btn-success">@Localizer["DetailsApprove"]</button>
+</form>
     }
 }
 
 @if (Model.Quote.Status != QuoteStatus.Rejected)
 {
-    @if ((await AuthorizationService.AuthorizeAsync(
+@if ((await AuthorizationService.AuthorizeAsync(
     User, Model.Quote, QuoteOperations.Reject)).Succeeded)
     {
-        <form style="display:inline;" method="post">
-            <input type="hidden" name="id" value="@Model.Quote.QuoteID" />
-            <input type="hidden" name="status" value="@QuoteStatus.Rejected" />
-            <button type="submit" class="btn btn-xs btn-danger">Reject</button>
-        </form>
+<form style="display:inline;" method="post">
+    <input type="hidden" name="id" value="@Model.Quote.QuoteID" />
+    <input type="hidden" name="status" value="@QuoteStatus.Rejected" />
+    <button type="submit" class="btn btn-xs btn-danger">@Localizer["DetailsReject"]</button>
+</form>
     }
 }
 
@@ -69,8 +70,8 @@
         User, Model.Quote,
         QuoteOperations.Update)).Succeeded)
     {
-        <a asp-page="./Edit" asp-route-id="@Model.Quote.QuoteID">Edit</a>
-        <text> | </text>
+    <a asp-page="./Edit" asp-route-id="@Model.Quote.QuoteID">@Localizer["DetailsEdit"]</a>
+    <text> | </text>
     }
-    <a asp-page="./Index">Back to List</a>
+<a asp-page="./Index">@Localizer["DetailsBackToList"]</a>
 </div>

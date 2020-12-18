@@ -117,10 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="StartTyping" xml:space="preserve">
-    <value>Start typing</value>
+  <data name="EditAuthor" xml:space="preserve">
+    <value>Yazar</value>
   </data>
-  <data name="TimerStarts" xml:space="preserve">
-    <value>The timer starts when a key is pressed.</value>
+  <data name="EditBackToList" xml:space="preserve">
+    <value>Geri dön</value>
+  </data>
+  <data name="EditEdit" xml:space="preserve">
+    <value>Düzenle</value>
+  </data>
+  <data name="EditQuote" xml:space="preserve">
+    <value>Metin</value>
+  </data>
+  <data name="EditStatus" xml:space="preserve">
+    <value>Durum</value>
+  </data>
+  <data name="EditText" xml:space="preserve">
+    <value>Yazı</value>
+  </data>
+  <data name="EditTitle" xml:space="preserve">
+    <value>Başlık</value>
   </data>
 </root>

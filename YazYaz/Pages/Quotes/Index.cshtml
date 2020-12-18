@@ -1,35 +1,36 @@
 ﻿@page
 @model YazYaz.Pages.Quotes.IndexModel
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h2>@Localizer["Quotes"]</h2>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Create">@Localizer["CreateNew"]</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Quote[0].Text)
+                @Localizer["Quote"]
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Quote[0].Author)
+                @Localizer["Author"]
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Quote[0].Title)
+                @Localizer["Title"]
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Quote[0].Status)
+                @Localizer["Status"]
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.Quote) 
+        @foreach (var item in Model.Quote)
         {
             <tr>
                 <td>
@@ -46,21 +47,21 @@
                 </td>
                 <td>
                     @if ((await AuthorizationService.AuthorizeAsync(
-                    User, item,
-                    QuoteOperations.Update)).Succeeded)
+                   User, item,
+                   QuoteOperations.Update)).Succeeded)
                     {
-                        <a asp-page="./Edit" asp-route-id="@item.QuoteID">Edit</a>
+                    <a asp-page="./Edit" asp-route-id="@item.QuoteID">@Localizer["Edit"]</a>
                         <text> | </text>
                     }
 
-                    <a asp-page="./Details" asp-route-id="@item.QuoteID">Details</a>
+                <a asp-page="./Details" asp-route-id="@item.QuoteID">@Localizer["Details"]</a>
 
                     @if ((await AuthorizationService.AuthorizeAsync(
-                    User, item,
-                    QuoteOperations.Delete)).Succeeded)
+                   User, item,
+                   QuoteOperations.Delete)).Succeeded)
                     {
                         <text> | </text>
-                        <a asp-page="./Delete" asp-route-id="@item.QuoteID">Delete</a>
+                <a asp-page="./Delete" asp-route-id="@item.QuoteID">@Localizer["Delete"]</a>
                     }
                 </td>
             </tr>
