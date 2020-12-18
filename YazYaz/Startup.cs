@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -47,8 +48,9 @@ namespace YazYaz
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllers()
                 .AddNewtonsoftJson();
-            services.AddRazorPages()
-                .AddNewtonsoftJson();
+            services
+                .AddConfiguredMvc()
+                .AddConfiguredLocalization();
 
             services.AddAuthorization(options =>
             {
@@ -87,10 +89,16 @@ namespace YazYaz
             app.UseAuthentication();
             app.UseAuthorization();
 
+            app.UseRequestLocalization(app.ApplicationServices
+                .GetRequiredService<IOptions<RequestLocalizationOptions>>().Value);
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
-                endpoints.MapControllers();
+
+                // Varsayilan controller mapleme islemini gerceklestiriyor. 
+                // MapControllers kullanilinca manuel olarak yapmak gerekiyor.
+                endpoints.MapDefaultControllerRoute();
             });
         }
     }
