@@ -1,46 +1,47 @@
 ﻿@page
 @model YazYaz.Pages.Quotes.DeleteModel
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = Localizer["DeleteDelete"];
 }
 
-<h1>Delete</h1>
+<h1>@Localizer["DeleteDelete"]</h1>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>@Localizer["DeleteAreYouSure"]</h3>
 <div>
-    <h4>Quote</h4>
+    <h4>@Localizer["DeleteQuote"]</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Quote.Text)
+            @Localizer["DeleteText"]
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Quote.Text)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Quote.Author)
+            @Localizer["DeleteAuthor"]
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Quote.Author)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Quote.Title)
+            @Localizer["DeleteTitle"]
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Quote.Title)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Quote.Status)
+            @Localizer["DeleteStatus"]
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Quote.Status)
         </dd>
     </dl>
-    
+
     <form method="post">
         <input type="hidden" asp-for="Quote.QuoteID" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-page="./Index">Back to List</a>
+        <input type="submit" value="@Localizer["DeleteDelete"]" class="btn btn-danger" /> |
+        <a asp-page="./Index">@Localizer["DeleteBackToList"]</a>
     </form>
 </div>

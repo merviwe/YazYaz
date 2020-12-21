@@ -117,40 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ClickTheBox" xml:space="preserve">
-    <value>Kutucuğa tıklayın ve görünen metni yazmaya başlayın.</value>
+  <data name="DeleteAreYouSure" xml:space="preserve">
+    <value>Are you sure you want to delete this quote?</value>
   </data>
-  <data name="Elapsed" xml:space="preserve">
-    <value>Geçen süre:</value>
+  <data name="DeleteAuthor" xml:space="preserve">
+    <value>Author</value>
   </data>
-  <data name="ErrorDatabase" xml:space="preserve">
-    <value>Hata! Skorlarınızın kaydedilmesi için giriş yapınız!</value>
+  <data name="DeleteBackToList" xml:space="preserve">
+    <value>Back to list</value>
   </data>
-  <data name="Errors" xml:space="preserve">
-    <value>Hata: </value>
+  <data name="DeleteDelete" xml:space="preserve">
+    <value>Delete</value>
   </data>
-  <data name="IndexHomePage" xml:space="preserve">
-    <value>Ana sayfa</value>
+  <data name="DeleteQuote" xml:space="preserve">
+    <value>Quote</value>
   </data>
-  <data name="SavedDatabase" xml:space="preserve">
-    <value>Kaydedildi!</value>
+  <data name="DeleteStatus" xml:space="preserve">
+    <value>Status</value>
   </data>
-  <data name="Seconds" xml:space="preserve">
-    <value>saniye.</value>
+  <data name="DeleteText" xml:space="preserve">
+    <value>Text</value>
   </data>
-  <data name="StartTyping" xml:space="preserve">
-    <value>Yazmaya başlayın!</value>
-  </data>
-  <data name="Time" xml:space="preserve">
-    <value>Süre</value>
-  </data>
-  <data name="TimerStarts" xml:space="preserve">
-    <value>Yazmaya başladığınızda kronometre başlayacaktır</value>
-  </data>
-  <data name="TypingSpeedIs" xml:space="preserve">
-    <value>Yazma hızınız</value>
-  </data>
-  <data name="WordsPerMinute" xml:space="preserve">
-    <value>dakika başına keslime.</value>
+  <data name="DeleteTitle" xml:space="preserve">
+    <value>Title</value>
   </data>
 </root>

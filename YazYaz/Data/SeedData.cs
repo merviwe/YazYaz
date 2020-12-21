@@ -17,8 +17,14 @@ namespace YazYaz.Data
             using var context = new ApplicationDbContext(
                 serviceProvider.GetRequiredService<DbContextOptions<ApplicationDbContext>>());
 
-            var adminID = await EnsureUser(serviceProvider, testUserPw, "g140910076@sakarya.edu.tr");
-            await EnsureRole(serviceProvider, adminID, Constants.QuoteAdministratorsRole);
+            var adminID_1 = await EnsureUser(serviceProvider, testUserPw, "g140910076@sakarya.edu.tr");
+            await EnsureRole(serviceProvider, adminID_1, Constants.QuoteAdministratorsRole);
+
+            var adminID_2 = await EnsureUser(serviceProvider, testUserPw, "g191210301@sakarya.edu.tr");
+            await EnsureRole(serviceProvider, adminID_2, Constants.QuoteAdministratorsRole);
+
+            var adminID_3 = await EnsureUser(serviceProvider, testUserPw, "g140910076@sakarya.edu.tr");
+            await EnsureRole(serviceProvider, adminID_3, Constants.QuoteAdministratorsRole);
 
             SeedDB(context, "0");
         }
@@ -89,8 +95,38 @@ namespace YazYaz.Data
                 new Quote 
                 { 
                     Text = "I would say it is much easier to play chess without the burden of an adams apple",
-                    Title = "The Queen's Gambit",
+                    Title = "The Queen's Gambit (Dizi)",
                     Author = "Walter Tevis"
+                },
+                new Quote
+                {
+                    Text = "I am gonna make him an offer he can not refuse",
+                    Title = "The Godfather (Film)",
+                    Author = "Don Vito Corleone"
+                },
+                new Quote
+                {
+                    Text = "The world is not perfect But it is there for us doing the best it can That is what makes it so damn beautiful",
+                    Title = "Full Metal Alchemist (Anime)",
+                    Author = "Roy Mustang"
+                },
+                new Quote
+                {
+                    Text = "Intelligence is the ability to avoid doing work but yet getting the work done",
+                    Title = "Linux",
+                    Author = "Linus Torvalds"
+                },
+                new Quote
+                {
+                    Text = "Acizler için imkansız korkaklar için inanılmaz gözüken şeyler kahramanlar için idealdir",
+                    Title = "Nutuk",
+                    Author = "Mustafa Kemal Atatürk"
+                },
+                new Quote
+                {
+                    Text = "Kin şeytanın kahkahasıdır",
+                    Title = "Suskunlar (Dizi)",
+                    Author = "İhsan Oktay Anar"
                 });
             context.SaveChanges();
         }

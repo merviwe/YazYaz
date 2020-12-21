@@ -5,7 +5,7 @@ using YazYaz.Models;
 
 namespace YazYaz.Authorization
 {
-    public class ContactAdministratorsAuthorizationHandler 
+    public class QuoteAdministratorsAuthorizationHandler 
                     : AuthorizationHandler<OperationAuthorizationRequirement, Quote>
     {
         protected override Task HandleRequirementAsync(

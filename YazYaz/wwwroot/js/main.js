@@ -15,15 +15,17 @@ $(document).ready(function(){
     errorLib = [];
     errorArray = [];
     seconds = 0;
-    stopped = 0;
+      stopped = 0;
+      wordsCount = 0;
+      typedEntries = 0;
 
-    $('h2').replaceWith("<h2>Click the textbox, and copy the content on the paragraph.</h2>");//reset header
-    $( ".alert" ).hide(); // Alerti gizle
-    $('#userInput').val(''); // Text area temizle
-
+      $('h2').replaceWith("<h2>" + localizerClickBox + "</h2>");//reset header
+      $( ".alert" ).hide(); // Alerti gizle
+      $('#userInput').val(''); // Text area temizle
+      $('#resultRank').html("");
+      $('#resultImage').html("");
     tempWords = genWords(); // Yeni kelimeler
-    wordLib = []; // empty the 2D char array
-    wordLib = genLib();//refill the 2D char array
+    wordLib = genLib();
   });
 
   //display an alert if the document is clicked
@@ -47,15 +49,15 @@ var t;
 var stopped = 0;
 function Timer(event){
     // Timer temizle
-    $(".resetBtn").click(function(){
+    $(".resetBtn").click(function() {
       clearInterval(t);
       seconds = 0;
       timer = 0;
     });
 
     // Timer baslat
-    if(timer == 0 && event.which!=13 && stopped == 0){
-      $('h2').replaceWith("<h2>Time elapsed: " + seconds/10 + " seconds.</h2>");
+    if(timer == 0 && event.which!=13 && stopped == 0) {
+        $('h2').replaceWith("<h2>" + localizerElapsed + " " + seconds/10 + " " + localizerSeconds + "</h2>");
       timer = 1;
       t = setInterval(function() {startTime()}, 100);
       timer = 1;
@@ -66,7 +68,7 @@ function Timer(event){
 // timer
 function startTime () {
     seconds = seconds + 1;
-    $('h2').replaceWith("<h2>Time elapsed: " + seconds/10 + " seconds.</h2>");
+    $('h2').replaceWith("<h2>" + localizerElapsed + " " + seconds/10 + " " + localizerSeconds + "</h2>");
 }
 
 function genLib () {
@@ -97,8 +99,7 @@ function Errors(event){
     if(stopped == 1){
         return;
     }
-    //increments atEnd and returns if the user continues to type when they have not
-    //finished the last word
+    // oyuncu son kelimeyi yazmadıysa atEnd arttırır
     if(atEnd > 0){
         atEnd++;
         return;
@@ -111,21 +112,19 @@ function Errors(event){
         }
     }
 
-    //if the user types the correct letter
-    //the index of the char will be marked as correct
-    //otherwise marked incorrect
-    if(String.fromCharCode(event.which) == wordLib[currWord][currIndex]){
-      errorArray[currIndex] = 0;
-      errorLib[currWord] = errorArray;
-      currIndex++;
-      typedEntries++;
+    // eğer kullanıcı doğru harfe basarsa ilgili char doğru olarak işaretlenir
+    // diğer halde yanlış olarak işaretlenir
+    if (String.fromCharCode(event.which) == wordLib[currWord][currIndex]) {
+        errorArray[currIndex] = 0;
+        errorLib[currWord] = errorArray;
+        currIndex++;
+        typedEntries++;
 
-      //once the user has correctly typed the last character
-      //the program is stopped with StopTime
-      if(currWord == wordsCount - 1 && currIndex == wordLib[currWord].length){ //@change 4 to #words - 1
-          StopTime();
-          return;
-      }
+        // kullanıcı son doğru harfi girdiğinde StopTime çağrılır
+        if(currWord == wordsCount - 1 && currIndex == wordLib[currWord].length) {
+            StopTime();
+            return;
+        }
     }
     else if (String.fromCharCode(event.which) != wordLib[currWord][currIndex]) {
         errorArray[currIndex] = 1;
@@ -137,8 +136,6 @@ function Errors(event){
         typedEntries++;
     }
 
-    //increases currWord and resets currIndex
-    //when the end of a word is reached
     if(currIndex == wordLib[currWord].length){
             currWord++;
             currIndex = 0;
@@ -146,50 +143,43 @@ function Errors(event){
     }
 }
 
-//separate function to handle backspace events
-function BackSpace(event){
-    if(event.which == 8){
-        //returns if a backspace is entered at the start of text
+// silme işlevini kotarmak için ayrı bir fonksiyon
+function BackSpace(event) {
+    if(event.which == 8) {
         if(currIndex == 0 && currWord == 0){
             return;
         }
-        //decreases atEnd and returns when the end has been reached
         if(atEnd > 0){
             atEnd--;
             return;
         }
 
-        //if a space is supposed to be pressed
-        //move back a character and set the index to the length of the previous word
         if(space == 1 && currIndex == 0){
             currWord--;
             currIndex = wordLib[currWord].length;
             space = 0;
 
-        //if a space is not to be pressed
-        //but the current character is the start of a word
-        //make the next character to be pressed to be the spacebar
-        }else if(space == 0 && currIndex == 0){
+        }
+        else if (space == 0 && currIndex == 0) {
             space = 1;
             return;
         }
 
         currIndex--;
 
-        //reduces the number of errors if the character that was backspaced was wrong
         if(errorLib[currWord][currIndex] == 1){
             numErrors--;
         }
     }
 }
 
-//'stops' the program
+// programı durdurur
 function StopTime(){
     stopped = 1;
     clearInterval(t);
     var netWPM = calcNetWPM();
     netWPM = Math.round(netWPM).toString();
-    $('h2').replaceWith("<h2>Your typing speed in net WPM: " + netWPM + " words per minute." + "Errors: " + numErrors + " Time:" + seconds/10);
+    $('h2').replaceWith("<h2>" + localizerTypingSpeedIs + " " + netWPM + " " + localizerWordsPerMinute + " " + localizerErrors + " " + numErrors + " " + localizerTime + " " + seconds/10);
     $('h2').css('color', 'blue');
 
     customAlert("Saving...", "info");
@@ -203,10 +193,10 @@ function StopTime(){
         },
         "data": JSON.stringify({ "time": (seconds / 10).toString(), "speed": netWPM }),
         "success": function () {
-            customAlert("Saved!", "success");
+            customAlert(localizerSavedDatabase, "success");
         },
         "error": function () {
-            customAlert("Error!", "danger");
+            customAlert(localizerErrorDatabase, "danger");
         }
     };
 
@@ -214,8 +204,36 @@ function StopTime(){
         console.log(response);
     });
 
+    showImage(netWPM);
+
     seconds = 0;
     timer = 0;
+}
+
+function showImage(wpm) {
+    var rank;
+    if (wpm < 24) {
+        rank = 'F';
+        $('#resultImage').append('<img src="../img/rank_f.png" width="450" height="250"/>');
+    }
+    else if (wpm > 25 && wpm < 30) {
+        rank = 'D';
+        $('#resultImage').append('<img src="../img/rank_d.png" width="450" height="250"/>');
+    }
+    else if (wpm >= 30 && wpm < 40) {
+        rank = 'C';
+        $('#resultImage').append('<img src="../img/rank_c.gif" width="450" height="250"/>');
+    }
+    else if (wpm >= 40 && wpm < 54) {
+        rank = 'B';
+        $('#resultImage').append('<img src="../img/rank_b.gif" width="450" height="250"/>');
+    }
+    else if (wpm >= 55) {
+        rank = 'A';
+        $('#resultImage').append('<img src="../img/rank_a.jpg" width="450" height="250"/>');
+    }
+
+    $('#resultRank').append('<h3>Rank: <span class="text-info">' + rank + '</span></h3>')
 }
 
 function customAlert(text, type) {
@@ -227,9 +245,9 @@ function customAlert(text, type) {
     $('#result').show()
 }
 
-//calculate the net WPM using the formula provided
-//in http://www.speedtypingonline.com/typing-equations
-function calcNetWPM(){
+// dakika başına kelimesini hesaplamak için gerekli algoritma
+// http://www.speedtypingonline.com/typing-equations
+function calcNetWPM() {
   var grossWPM = (typedEntries / 5) / (seconds / 10 / 60);
   var netWPM = grossWPM - (numErrors / seconds / 10 / 60);
   return Math.round(netWPM * 100) / 100

@@ -2,7 +2,7 @@
 @model IndexModel
 @inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = Localizer["IndexHomePage"];
 }
 
 <div class="container-fluid pt-3">
@@ -31,13 +31,25 @@
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <strong>Warning!</strong> The timer is still running. You must finish typing all of the content!
         </div>
-        <div class="pt-3">
-            <button type="button" class="resetBtn btn btn-primary btn-lg"><i class="fa fa-refresh"></i> Reset</button>
+    </div>
+    <div class="row justify-content-center pt-1">
+        <div class="col-4">
+            <div class="pt-1">
+                <button type="button" class="resetBtn btn btn-primary btn-lg"><i class="fa fa-refresh"></i> Reset</button>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="pt-1">
+                <div id="result"></div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="pt-1">
+                <div id="resultRank"></div>
+            </div>
         </div>
     </div>
-    <div class="row justify-content-center pt-3">
-        <div id="result"></div>
-    </div>
+    <div class="row justify-content-center pt-1" id="resultImage"></div>
 </div>
 
 @section Scripts
@@ -45,7 +57,16 @@
     <script>
         var paragraph = "@Html.DisplayFor(model => model.Quote.Text)"
         var uri = "api/Records"
-        
+
+        var localizerTypingSpeedIs = "@Localizer["TypingSpeedIs"]";
+        var localizerWordsPerMinute = "@Localizer["WordsPerMinute"]";
+        var localizerErrors = "@Localizer["Errors"]";
+        var localizerTime = "@Localizer["Time"]";
+        var localizerElapsed = "@Localizer["Elapsed"]";
+        var localizerSeconds = "@Localizer["Seconds"]";
+        var localizerClickBox = "@Localizer["ClickTheBox"]";
+        var localizerSavedDatabase = "@Localizer["SavedDatabase"]";
+        var localizerErrorDatabase = "@Localizer["ErrorDatabase"]";
     </script>
     <script src="~/js/main.js"></script>
 }

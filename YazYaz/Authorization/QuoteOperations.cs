@@ -32,6 +32,6 @@ namespace YazYaz.Authorization
         public static readonly string RejectOperationName = "Reject";
 
         public static readonly string QuoteAdministratorsRole =
-                                                              "ContactAdministrators";
+                                                              "QuoteAdministrators";
     }
 }

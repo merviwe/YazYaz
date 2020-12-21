@@ -10,8 +10,8 @@
                 var cultureItems = LocalizationOptions.Value.SupportedUICultures
                     .Select(c => new SelectListItem { Value = c.Name, Text = Localizer.GetString(c.Name) })
                     .ToList();
-                var returnUrl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}{Context.Request.QueryString}"; }
-
+                var returnUrl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}{Context.Request.QueryString}"; 
+}
 
 <form id="selectLanguage"
       asp-controller="Culture"

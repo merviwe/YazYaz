@@ -10,7 +10,7 @@ using YazYaz.Data;
 namespace YazYaz.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201217140802_Initial")]
+    [Migration("20201220233654_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -188,9 +188,6 @@ namespace YazYaz.Migrations
                     b.Property<string>("NormalizedUserName")
                         .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
-
-                    b.Property<string>("OwnerID")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
