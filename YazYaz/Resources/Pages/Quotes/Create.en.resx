@@ -129,6 +129,9 @@
   <data name="QuoteCreate" xml:space="preserve">
     <value>Quote</value>
   </data>
+  <data name="QuotesCreate" xml:space="preserve">
+    <value>Create</value>
+  </data>
   <data name="TextCreate" xml:space="preserve">
     <value>Text</value>
   </data>

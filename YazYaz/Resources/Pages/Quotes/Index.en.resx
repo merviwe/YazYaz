@@ -138,6 +138,15 @@
   <data name="Quotes" xml:space="preserve">
     <value>Quotes</value>
   </data>
+  <data name="QuotesIndexApproved" xml:space="preserve">
+    <value>Approved</value>
+  </data>
+  <data name="QuotesIndexRejected" xml:space="preserve">
+    <value>Rejected</value>
+  </data>
+  <data name="QuotesIndexSubmitted" xml:space="preserve">
+    <value>Submitted</value>
+  </data>
   <data name="Status" xml:space="preserve">
     <value>Status</value>
   </data>

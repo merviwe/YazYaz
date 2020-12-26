@@ -129,6 +129,9 @@
   <data name="EditQuote" xml:space="preserve">
     <value>Metin</value>
   </data>
+  <data name="EditSaveButton" xml:space="preserve">
+    <value>Kaydet</value>
+  </data>
   <data name="EditStatus" xml:space="preserve">
     <value>Durum</value>
   </data>

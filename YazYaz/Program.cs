@@ -27,10 +27,10 @@ namespace YazYaz
                     var context = services.GetRequiredService<ApplicationDbContext>();
                     context.Database.Migrate();
 
-                    // requires using Microsoft.Extensions.Configuration;
                     var config = host.Services.GetRequiredService<IConfiguration>();
-                    // Set password with the Secret Manager tool.
-                    // dotnet user-secrets set SeedUserPW <pw>
+
+
+                    // 
 
                     var testUserPw = config["SeedUserPW"];
 
@@ -39,7 +39,7 @@ namespace YazYaz
                 catch (Exception ex)
                 {
                     var logger = services.GetRequiredService<ILogger<Program>>();
-                    logger.LogError(ex, "An error occurred seeding the DB.");
+                    logger.LogError(ex, "Ornek veriler olusturulurken hata meydana geldi.");
                 }
             }
 

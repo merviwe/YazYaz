@@ -32,39 +32,54 @@
     <tbody>
         @foreach (var item in Model.Quote)
         {
-            <tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Text)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            @if (item.Status == QuoteStatus.Approved)
+            {
                 <td>
-                    @Html.DisplayFor(modelItem => item.Text)
+                    @Localizer["QuotesIndexApproved"]
                 </td>
+            }
+            else if (item.Status == QuoteStatus.Rejected)
+            {
                 <td>
-                    @Html.DisplayFor(modelItem => item.Author)
+                    @Localizer["QuotesIndexRejected"]
                 </td>
+            }
+            else if (item.Status == QuoteStatus.Submitted)
+            {
                 <td>
-                    @Html.DisplayFor(modelItem => item.Title)
+                    @Localizer["QuotesIndexSubmitted"]
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Status)
-                </td>
-                <td>
-                    @if ((await AuthorizationService.AuthorizeAsync(
-                   User, item,
-                   QuoteOperations.Update)).Succeeded)
-                    {
+            }
+            <td>
+                @if ((await AuthorizationService.AuthorizeAsync(
+             User, item,
+             QuoteOperations.Update)).Succeeded)
+                {
                     <a asp-page="./Edit" asp-route-id="@item.QuoteID">@Localizer["Edit"]</a>
-                        <text> | </text>
-                    }
+                    <text> | </text>
+                }
 
                 <a asp-page="./Details" asp-route-id="@item.QuoteID">@Localizer["Details"]</a>
 
-                    @if ((await AuthorizationService.AuthorizeAsync(
-                   User, item,
-                   QuoteOperations.Delete)).Succeeded)
-                    {
-                        <text> | </text>
-                <a asp-page="./Delete" asp-route-id="@item.QuoteID">@Localizer["Delete"]</a>
-                    }
-                </td>
-            </tr>
+                @if ((await AuthorizationService.AuthorizeAsync(
+             User, item,
+             QuoteOperations.Delete)).Succeeded)
+                {
+                    <text> | </text>
+                    <a asp-page="./Delete" asp-route-id="@item.QuoteID">@Localizer["Delete"]</a>
+                }
+            </td>
+        </tr>
         }
     </tbody>
 </table>
