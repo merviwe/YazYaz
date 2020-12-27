@@ -123,6 +123,9 @@
   <data name="Home" xml:space="preserve">
     <value>Home</value>
   </data>
+  <data name="NavbarContact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
   <data name="Quotes" xml:space="preserve">
     <value>Quotes</value>
   </data>

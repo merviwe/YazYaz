@@ -117,19 +117,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Help" xml:space="preserve">
-    <value>Yardım</value>
+  <data name="ContactAddress" xml:space="preserve">
+    <value>ADRES</value>
   </data>
-  <data name="Home" xml:space="preserve">
-    <value>Anasayfa</value>
+  <data name="ContactAddressCountry" xml:space="preserve">
+    <value>Türkiye</value>
   </data>
-  <data name="NavbarContact" xml:space="preserve">
-    <value>İletişim</value>
+  <data name="ContactAddressEmail" xml:space="preserve">
+    <value>g@sakarya.edu.tr</value>
   </data>
-  <data name="Quotes" xml:space="preserve">
-    <value>Metinler</value>
+  <data name="ContactAddressFirstLine" xml:space="preserve">
+    <value>Kemalpaşa Esentepe Kampüsü</value>
   </data>
-  <data name="Rankings" xml:space="preserve">
-    <value>Sıralama</value>
+  <data name="ContactAddressPhone" xml:space="preserve">
+    <value>0553 333 33 33</value>
+  </data>
+  <data name="ContactAddressSecondLine" xml:space="preserve">
+    <value>Üniversite Cd., 54050 Serdivan/Sakarya</value>
+  </data>
+  <data name="ContactContactUs" xml:space="preserve">
+    <value>Bize ulaşın.</value>
+  </data>
+  <data name="ContactEmail" xml:space="preserve">
+    <value>E-posta</value>
+  </data>
+  <data name="ContactEnterEmail" xml:space="preserve">
+    <value>E-posta girin</value>
+  </data>
+  <data name="ContactEnterName" xml:space="preserve">
+    <value>İsim girin</value>
+  </data>
+  <data name="ContactMessage" xml:space="preserve">
+    <value>Mesaj</value>
+  </data>
+  <data name="ContactName" xml:space="preserve">
+    <value>İsim</value>
+  </data>
+  <data name="ContactSubmitButton" xml:space="preserve">
+    <value>Gönder</value>
   </data>
 </root>

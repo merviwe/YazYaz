@@ -23,7 +23,7 @@ namespace YazYaz.Data
             var adminID_2 = await EnsureUser(serviceProvider, testUserPw, "g191210301@sakarya.edu.tr");
             await EnsureRole(serviceProvider, adminID_2, Constants.QuoteAdministratorsRole);
 
-            var adminID_3 = await EnsureUser(serviceProvider, testUserPw, "g140910076@sakarya.edu.tr");
+            var adminID_3 = await EnsureUser(serviceProvider, testUserPw, "b171210054@sakarya.edu.tr");
             await EnsureRole(serviceProvider, adminID_3, Constants.QuoteAdministratorsRole);
 
             SeedDB(context, "0");
